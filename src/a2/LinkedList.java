@@ -27,6 +27,7 @@ public class LinkedList {
         }
         if (index == 0) {
             head = head.getNext();
+            size--;
             return;
         }
         int i = 0;
@@ -78,6 +79,12 @@ public class LinkedList {
         if (size != list2.size) {
             return false;
         }
+        if (head == null) {
+            return false;
+        }
+        if (list2.head == null) {
+            return false;
+        }
         int head1 = head.getValue();
         int head2 = list2.head.getValue();
         if (head1 != head2) {
@@ -109,6 +116,7 @@ public class LinkedList {
         while (current.hasNext()) {
             Node removedNode = current.getNext();
             current.setNext(removedNode.getNext());
+            size--;
             if (current.hasNext()) {
                 current = current.getNext();
             }
@@ -168,6 +176,7 @@ public class LinkedList {
     public void multiply(int factor) {
         if (factor == 0) {
             head = null;
+            size = 0;
             return;
         }
         if (head == null) {
