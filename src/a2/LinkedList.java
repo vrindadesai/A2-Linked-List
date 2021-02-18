@@ -10,12 +10,12 @@ public class LinkedList {
      * Remove the node at index i of the list.
      * Note that the first element is at index 0
      * If i is larger than the size of the list, throw an IndexOutOfBounds Exception
-     *
+     * <p>
      * ex: list: 1 -> 2 -> 3 -> 4
-     *     i: 1
-     *     list after removeAtIndex: 1 -> 3 -> 4
+     * i: 1
+     * list after removeAtIndex: 1 -> 3 -> 4
      *
-     * @param index    - index of node to remove
+     * @param index - index of node to remove
      */
     public void removeAtIndex(int index) {
         if (head == null) {
@@ -37,12 +37,14 @@ public class LinkedList {
         }
         Node removedNode = current.getNext();
         current.setNext(removedNode.getNext());
+        size--;
         return;
     }
 
 
     /**
      * Compute and return the average of all the numbers in the linked list rounded down to the nearest integer
+     *
      * @return an int that is the floor of the mean of the list.
      */
     public int mean() {
@@ -63,12 +65,12 @@ public class LinkedList {
      * Two lists are equal if they have the same size, and the same
      * elements in the same order.
      * ex:  list: 1 -> 4 -> 2
-     *      list2: 1 -> 4 -> 2
-     *      return: true
-     *
-     *      list: 1 -> 5
-     *      list2: 2 -> 5
-     *      return false;
+     * list2: 1 -> 4 -> 2
+     * return: true
+     * <p>
+     * list: 1 -> 5
+     * list2: 2 -> 5
+     * return false;
      *
      * @return true if the lists have the same elements in the same order, false otherwise
      */
@@ -95,16 +97,16 @@ public class LinkedList {
 
     /**
      * Remove all the nodes at odd indices from the list. Remember that the first Node is at index 0
-     *
+     * <p>
      * ex: list: 1 -> 3 -> 4 -> 2 -> 8
-     *     list after removeOdds: 1 -> 4 -> 8
+     * list after removeOdds: 1 -> 4 -> 8
      */
     public void removeOdds() {
         if (head == null) {
             return;
         }
         Node current = head;
-        while(current.hasNext()) {
+        while (current.hasNext()) {
             Node removedNode = current.getNext();
             current.setNext(removedNode.getNext());
             if (current.hasNext()) {
@@ -117,17 +119,17 @@ public class LinkedList {
     /**
      * Return true if the list is symmetrical, false otherwise
      * ex: list: 1 -> 2 -> 3 -> 2 -> 1
-     *     return: true
-     *
-     *     list: 1 -> 2 -> 3 -> 4 -> 5
-     *     return: false
+     * return: true
+     * <p>
+     * list: 1 -> 2 -> 3 -> 4 -> 5
+     * return: false
      *
      * @return true if the list is symmetrical, false otherwise
      */
 
     public boolean isSymmetrical() {
         if (size == 0) {
-            return false;
+            return true;
         }
         int half = size / 2;
         int i = 0;
@@ -158,13 +160,13 @@ public class LinkedList {
      * Stretch the list so that each element in the list is represented factor times
      * If the factor is 0 the list should be cleared (have 0 nodes)
      * ex: list: 1 -> 2 -> 3
-     *     factor: 3
-     *     list after multiply: 1 -> 1 -> 1 -> 2 -> 2 -> 2 -> 3 -> 3 -> 3
+     * factor: 3
+     * list after multiply: 1 -> 1 -> 1 -> 2 -> 2 -> 2 -> 3 -> 3 -> 3
      *
      * @param factor the amount to multiply the number of occurrences of each element by
      */
     public void multiply(int factor) {
-        if (factor == 0){
+        if (factor == 0) {
             head = null;
             return;
         }
@@ -177,7 +179,6 @@ public class LinkedList {
         int i = 0;
         while (current != null) {
             valueArray[i] = current.getValue();
-            System.out.println("array " + valueArray[i]);
             current = current.getNext();
             i++;
         }
@@ -186,19 +187,15 @@ public class LinkedList {
         while (n < valueArray.length) {
             int f = 0;
             while (f < factor - 1) {
-                System.out.println("f " + f);
-                System.out.println("factor " + factor);
-                System.out.println("index " + index);
-                System.out.println("multiplying " + valueArray[n]);
                 add(index, valueArray[n]);
                 f++;
                 index++;
             }
             index++;
             n++;
-            }
-        return;
         }
+        return;
+    }
 
     //use add to put in new numbers
     //change i by factor
@@ -206,10 +203,9 @@ public class LinkedList {
 
     /**
      * Reverse the list
-     *
+     * <p>
      * ex list:  10 -> 9 -> 8 -> 7
-     *    list after reverse: 7 -> 8 -> 9 -> 10
-     *
+     * list after reverse: 7 -> 8 -> 9 -> 10
      */
     public void reverse() {
 
@@ -218,8 +214,7 @@ public class LinkedList {
     /**
      * Given a sorted linked list, remove the duplicate values from the list
      * ex: list: 5 -> 6 -> 7 -> 7 -> 7 -> 8 -> 8 -> 9
-     *     list after removeRepeats: 5 -> 6 -> 7 -> 8 -> 9
-     *
+     * list after removeRepeats: 5 -> 6 -> 7 -> 8 -> 9
      */
     public void removeRepeats() {
 
@@ -230,13 +225,13 @@ public class LinkedList {
     /**
      * Return true if the list contains a cycle, false otherwise
      * ex: list: 1 -> 2 -> 3 - > 4 --       (4 points to 2)
-     *                ^              |
-     *                |              |
-     *                ---------------
-     *      return: true
-     *
-     *      list: 1 -> 2 -> 3 -> 4
-     *      return: false
+     * ^              |
+     * |              |
+     * ---------------
+     * return: true
+     * <p>
+     * list: 1 -> 2 -> 3 -> 4
+     * return: false
      *
      * @return true if the list contains a cycle, false otherwise
      */
@@ -248,20 +243,21 @@ public class LinkedList {
      * Merge the given linked list into the current list. The 2 lists will always be
      * either the same size, or the current list will be longer than list2.
      * The examples below show how to handle each case.
-     *
+     * <p>
      * Note: Do NOT create and return a new list, merge the second list into the first one.
-     *
+     * <p>
      * ex: list: 1 -> 2 -> 3
-     *     list2: 4 -> 5 -> 6
-     *     return: 1 -> 4 -> 2 -> 5 -> 3 -> 6
-     *
-     *     list: 1 -> 2 -> 3 -> 4
-     *     list2: 5 -> 6
-     *     return 1 -> 5 -> 2 -> 6 -> 3 -> 4
+     * list2: 4 -> 5 -> 6
+     * return: 1 -> 4 -> 2 -> 5 -> 3 -> 6
+     * <p>
+     * list: 1 -> 2 -> 3 -> 4
+     * list2: 5 -> 6
+     * return 1 -> 5 -> 2 -> 6 -> 3 -> 4
      *
      * @param list2
      */
-    public void merge(LinkedList list2) { }
+    public void merge(LinkedList list2) {
+    }
 
 
     /* Implementation given to you. Do not modify below this. */
@@ -285,8 +281,8 @@ public class LinkedList {
      */
     public boolean contains(int element) {
         Node current = head;
-        while(current != null) {
-            if(current.getValue() == element) {
+        while (current != null) {
+            if (current.getValue() == element) {
                 return true;
             }
             current = current.getNext();
@@ -298,13 +294,13 @@ public class LinkedList {
     converts the linked list into an array
      */
     public int[] toArray() {
-        int[] arr =  new int[size()];
+        int[] arr = new int[size()];
         Node current = head;
         int i = 0;
-        if(isEmpty()) {
+        if (isEmpty()) {
             return arr;
         }
-        while(current != null){
+        while (current != null) {
             arr[i] = current.getValue();
             current = current.getNext();
             i++;
@@ -317,7 +313,7 @@ public class LinkedList {
      */
     public void add(int element) {
         Node newNode = new NodeImpl(element, null);
-        if(isEmpty()) {
+        if (isEmpty()) {
             head = newNode;
             tail = newNode;
             size++;
@@ -334,21 +330,21 @@ public class LinkedList {
      */
     public boolean remove(int element) {
         Node current = head;
-        if(isEmpty()) {
+        if (isEmpty()) {
             return false;
         }
-        if(current.getValue() == element){
+        if (current.getValue() == element) {
             head = head.getNext();
             size--;
             return true;
         }
-        while(current.getNext().getValue() != element) {
+        while (current.getNext().getValue() != element) {
             current = current.getNext();
-            if(current == null) {
+            if (current == null) {
                 return false;
             }
         }
-        if(current.getNext().getNext() == null) {
+        if (current.getNext().getNext() == null) {
             tail = current;
         }
         current.setNext(current.getNext().getNext());
@@ -378,12 +374,12 @@ public class LinkedList {
         Node current = head;
         int prevValue = 1;
         int i = 0;
-        if(index == 0) {
+        if (index == 0) {
             prevValue = head.getValue();
             head.setValue(element);
         } else {
-            while(current != null) {
-                if(i == index) {
+            while (current != null) {
+                if (i == index) {
                     prevValue = current.getValue();
                     current.setValue(element);
                     return prevValue;
@@ -400,13 +396,13 @@ public class LinkedList {
     adds a node at the given index with the given element as its value
      */
     public void add(int index, int element) {
-        if(index > size) {
+        if (index > size) {
             validIndex(index);
         }
         Node current = head;
         int i = 0;
-        if(index == 0) {
-            if(isEmpty()) {
+        if (index == 0) {
+            if (isEmpty()) {
                 add(element);
                 return;
             } else {
@@ -416,12 +412,12 @@ public class LinkedList {
                 return;
             }
 
-        }  else if(index == size) {
+        } else if (index == size) {
             add(element);
             return;
         }
-        while(current != null) {
-            if(i == (index - 1)) {
+        while (current != null) {
+            if (i == (index - 1)) {
                 Node temp = current.getNext();
                 Node newNode = new NodeImpl(element, temp);
                 current.setNext(newNode);
@@ -440,8 +436,8 @@ public class LinkedList {
     public int indexOf(int element) {
         Node current = head;
         int index = 0;
-        while(current != null) {
-            if(current.getValue() == element) {
+        while (current != null) {
+            if (current.getValue() == element) {
                 return index;
             }
             index++;
@@ -457,8 +453,8 @@ public class LinkedList {
         Node current = head;
         int index = -1;
         int i = 0;
-        while(current != null) {
-            if(current.getValue() == element) {
+        while (current != null) {
+            if (current.getValue() == element) {
                 index = i;
             }
             i++;
@@ -468,7 +464,7 @@ public class LinkedList {
     }
 
     public void validIndex(int i) {
-        if(i < 0 || i >= size) {
+        if (i < 0 || i >= size) {
             throw new IndexOutOfBoundsException("Invalid index");
         }
     }
@@ -481,14 +477,13 @@ public class LinkedList {
     public String toString() {
         String list = "";
         Node current = head;
-        while(current != null) {
-            if(current.getNext() == null)
-                list+= current.getValue();
+        while (current != null) {
+            if (current.getNext() == null)
+                list += current.getValue();
             else
                 list += current.getValue() + " -> ";
             current = current.getNext();
         }
         return list;
     }
-
 }
