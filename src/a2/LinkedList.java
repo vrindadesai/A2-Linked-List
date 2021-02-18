@@ -15,16 +15,44 @@ public class LinkedList {
      *     i: 1
      *     list after removeAtIndex: 1 -> 3 -> 4
      *
-     * @param i    - index of node to remove
+     * @param index    - index of node to remove
      */
-    public void removeAtIndex(int i) {
+    public void removeAtIndex(int index) {
+        if (index >= size) {
+            validIndex(index);
+        }
+        if (index == 0) {
+            head = head.getNext();
+            return;
+        }
+        int i = 0;
+        Node current = head;
+        while (i < (index - 1)) {
+            current = current.getNext();
+            i++;
+        }
+        Node removedNode = current.getNext();
+        current.setNext(removedNode.getNext());
+        return;
     }
+
 
     /**
      * Compute and return the average of all the numbers in the linked list rounded down to the nearest integer
      * @return an int that is the floor of the mean of the list.
      */
-    public int mean() { return -1; }
+    public int mean() {
+        if (head == null)
+            return 0;
+        Node current = head.getNext();
+        int total = head.getValue();
+        while (current != null) {
+            total = total + current.getValue();
+            current = current.getNext();
+        }
+        int average = (total / size);
+        return average;
+    }
 
     /**
      * Return true if this linked list is equal to the list argument, false otherwise.
@@ -41,7 +69,24 @@ public class LinkedList {
      * @return true if the lists have the same elements in the same order, false otherwise
      */
     public boolean isEqual(LinkedList list2) {
-        return false;
+        if (size != list2.size) {
+            return false;
+        }
+        int head1 = head.getValue();
+        int head2 = list2.head.getValue();
+        if (head1 != head2) {
+            return false;
+        }
+        Node current1 = head.getNext();
+        Node current2 = list2.head.getNext();
+        while (current1 != null) {
+            if (current1.getValue() != current2.getValue()) {
+                return false;
+            }
+            current1 = current1.getNext();
+            current2 = current2.getNext();
+        }
+        return true;
     }
 
     /**
@@ -50,7 +95,20 @@ public class LinkedList {
      * ex: list: 1 -> 3 -> 4 -> 2 -> 8
      *     list after removeOdds: 1 -> 4 -> 8
      */
-    public void removeOdds() { }
+    public void removeOdds() {
+        if (head == null) {
+            return;
+        }
+        Node current = head;
+        while(current.hasNext()) {
+            Node removedNode = current.getNext();
+            current.setNext(removedNode.getNext());
+            if (current.hasNext()) {
+                current = current.getNext();
+            }
+        }
+        return;
+    }
 
     /**
      * Return true if the list is symmetrical, false otherwise
@@ -64,7 +122,31 @@ public class LinkedList {
      */
 
     public boolean isSymmetrical() {
-        return false;
+        if (size == 0) {
+            return false;
+        }
+        int half = size / 2;
+        int i = 0;
+        Node current = head;
+        //Create arrays to store half the values
+        int[] valueArray = new int[half];
+        while (i < half) {
+            valueArray[i] = current.getValue();
+            current = current.getNext();
+            i++;
+        }
+        if (size % 2 != 0) {
+            current = current.getNext();
+        }
+        i = i - 1;
+        while (current != null) {
+            if (current.getValue() != valueArray[i]) {
+                return false;
+            }
+            current = current.getNext();
+            i--;
+        }
+        return true;
     }
 
 
