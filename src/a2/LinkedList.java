@@ -18,8 +18,12 @@ public class LinkedList {
      * @param index    - index of node to remove
      */
     public void removeAtIndex(int index) {
+        if (head == null) {
+            return;
+        }
         if (index >= size) {
             validIndex(index);
+            return;
         }
         if (index == 0) {
             head = head.getNext();
@@ -159,7 +163,46 @@ public class LinkedList {
      *
      * @param factor the amount to multiply the number of occurrences of each element by
      */
-    public void multiply(int factor) { }
+    public void multiply(int factor) {
+        if (factor == 0){
+            head = null;
+            return;
+        }
+        if (head == null) {
+            return;
+        }
+        //create an array to store numbers
+        int[] valueArray = new int[size];
+        Node current = head;
+        int i = 0;
+        while (current != null) {
+            valueArray[i] = current.getValue();
+            System.out.println("array " + valueArray[i]);
+            current = current.getNext();
+            i++;
+        }
+        int n = 0;
+        int index = 1;
+        while (n < valueArray.length) {
+            int f = 0;
+            while (f < factor - 1) {
+                System.out.println("f " + f);
+                System.out.println("factor " + factor);
+                System.out.println("index " + index);
+                System.out.println("multiplying " + valueArray[n]);
+                add(index, valueArray[n]);
+                f++;
+                index++;
+            }
+            index++;
+            n++;
+            }
+        return;
+        }
+
+    //use add to put in new numbers
+    //change i by factor
+    //
 
     /**
      * Reverse the list
@@ -178,7 +221,10 @@ public class LinkedList {
      *     list after removeRepeats: 5 -> 6 -> 7 -> 8 -> 9
      *
      */
-    public void removeRepeats() { }
+    public void removeRepeats() {
+
+
+    }
 
 
     /**
