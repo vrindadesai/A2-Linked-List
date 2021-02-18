@@ -79,10 +79,10 @@ public class LinkedList {
         if (size != list2.size) {
             return false;
         }
-        if (head == null) {
-            return false;
-        }
-        if (list2.head == null) {
+        if (head == null && list2.head == null) {
+            return true;
+            }
+        if (head == null || list2.head == null) {
             return false;
         }
         int head1 = head.getValue();
