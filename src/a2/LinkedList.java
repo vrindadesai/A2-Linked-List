@@ -52,13 +52,14 @@ public class LinkedList {
         if (head == null)
             return 0;
         Node current = head.getNext();
-        int total = head.getValue();
+        double total = head.getValue();
         while (current != null) {
             total = total + current.getValue();
             current = current.getNext();
         }
-        int average = (total / size);
-        return average;
+        double average = (total/size);
+        int roundedAverage = (int) Math.floor(average);
+        return roundedAverage;
     }
 
     /**
@@ -248,17 +249,13 @@ public class LinkedList {
         while (current.hasNext()) {
             int currentValue = current.getValue();
             int nextValue = current.getNext().getValue();
-            //System.out.println("current " + currentValue);
-            //System.out.println("next " + nextValue);
             if (currentValue == nextValue) {
                 removeAtIndex(index);
-                //System.out.println("cut" + index);
             }
             else {
                 current = current.getNext();
                 index++;
             }
-            //System.out.println(toString());
         }
         return;
         }
