@@ -5,13 +5,19 @@ public class Main {
 
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
-        list.add(-29);
-        list.add(-33);
-        list.add(91);
-        list.add(23);
-        list.add(26);
+        list.add(4);
+        list.add(7);
+        list.add(7);
+        list.add(9);
+        list.add(10);
+        list.add(10);
+        list.add(10);
+        list.add(11);
+        list.add(12);
+        list.add(12);
+        list.add(12);
         System.out.println(list.toString());
-        list.removeAtIndex(1);
+        list.removeRepeats();
         System.out.println(list.toString());
     }
 }

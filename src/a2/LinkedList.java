@@ -206,10 +206,6 @@ public class LinkedList {
         return;
     }
 
-    //use add to put in new numbers
-    //change i by factor
-    //
-
     /**
      * Reverse the list
      * <p>
@@ -217,7 +213,25 @@ public class LinkedList {
      * list after reverse: 7 -> 8 -> 9 -> 10
      */
     public void reverse() {
-
+        if (head == null) {
+            return;
+        }
+        //Store values in array
+        int[] valueArray = new int[size];
+        Node current = head;
+        int i = 0;
+        while (current != null) {
+            valueArray[i] = current.getValue();
+            current = current.getNext();
+            i++;
+        }
+        i = i - 1;
+        current = head;
+        while (current != null) {
+            current.setValue(valueArray[i]);
+            current = current.getNext();
+            i--;
+        }
     }
 
     /**
@@ -226,10 +240,28 @@ public class LinkedList {
      * list after removeRepeats: 5 -> 6 -> 7 -> 8 -> 9
      */
     public void removeRepeats() {
-
-
-    }
-
+        if (head == null) {
+            return;
+        }
+        Node current = head;
+        int index = 1;
+        while (current.hasNext()) {
+            int currentValue = current.getValue();
+            int nextValue = current.getNext().getValue();
+            //System.out.println("current " + currentValue);
+            //System.out.println("next " + nextValue);
+            if (currentValue == nextValue) {
+                removeAtIndex(index);
+                //System.out.println("cut" + index);
+            }
+            else {
+                current = current.getNext();
+                index++;
+            }
+            //System.out.println(toString());
+        }
+        return;
+        }
 
     /**
      * Return true if the list contains a cycle, false otherwise
@@ -266,6 +298,8 @@ public class LinkedList {
      * @param list2
      */
     public void merge(LinkedList list2) {
+        //create array with list 2
+        //add elements of array at increasing index
     }
 
 
