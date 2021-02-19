@@ -266,9 +266,9 @@ public class LinkedList {
     /**
      * Return true if the list contains a cycle, false otherwise
      * ex: list: 1 -> 2 -> 3 - > 4 --       (4 points to 2)
-     * ^              |
-     * |              |
-     * ---------------
+     *                ^          |
+     *                |          |
+     *                ------------
      * return: true
      * <p>
      * list: 1 -> 2 -> 3 -> 4
@@ -277,7 +277,14 @@ public class LinkedList {
      * @return true if the list contains a cycle, false otherwise
      */
     public boolean containsCycle() {
-        return false;
+        if (head == null) {
+            return false;
+        }
+        if (tail != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -299,7 +306,15 @@ public class LinkedList {
      */
     public void merge(LinkedList list2) {
         //create array with list 2
+        int[] list2Array = list2.toArray();
+        int index = 1;
+        int i = 0;
         //add elements of array at increasing index
+        while (i < list2Array.length) {
+            add(index, list2Array[i]);
+            index = index + 2;
+            i++;
+        }
     }
 
 
