@@ -280,7 +280,7 @@ public class LinkedList {
         if (head == null) {
             return false;
         }
-        if (tail != null) {
+        if (tail.getNext() != null) {
             return true;
         } else {
             return false;
